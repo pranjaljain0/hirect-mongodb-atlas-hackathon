@@ -94,6 +94,8 @@ Here you can see, As I dont want multiple users I first check for user then I mo
 
 To update I am using addToSet feature of MongoDB
 
+- I learned a lot about CRUD operations of mongoDB and the ton of features I am provided with it.
+
 Updating Jobs ([jobs.js](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon/blob/main/hirect-backend/routes/jobs.js))
 
 ```js

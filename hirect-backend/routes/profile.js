@@ -17,8 +17,7 @@ app.use(
 	})
 );
 
-const uri =
-	'mongodb+srv://pranjaljain0:mOI95OR4zNrtyZ3i@cluster0.gylbe.mongodb.net/hirect?retryWrites=true&w=majority';
+const uri = env.MongoDBuri;
 
 app.get('/', (req, res) => res.json({ Route: 'Profile' }));
 

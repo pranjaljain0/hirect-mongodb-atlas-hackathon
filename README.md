@@ -24,6 +24,74 @@ The screenshots are attached but I have created a demo video for the whole app.
 
 For this application I have build an application on Flutter as a native mobile for both android and IOS, The backend for the app is made in ExpressJS with multiple libraries to debug APIs written. The app uses basic design as I didnt focus on design of the application, And then I created comphrensive APIs for doing multiple operations.
 
+In express JS I am using `mondodb` Package where I am running mongoDB queries like this
+
+login ([Auth.js](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon/blob/main/hirect-backend/routes/auth.js))
+
+```js
+MongoClient.connect(uri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+})
+	.then((client) => {
+		client
+			.db('Hirect')
+			.collection('Users')
+			.find({ email: email, password: password })
+			.toArray((err, results) => {
+				err && res.status(400).json({ error: err, status: 0 });
+				if (results.length != 1)
+					res.status(401).json({ status: 0, message: 'User not found' });
+				else res.status(200).json(results);
+			});
+		return client;
+	})
+	.catch((error) => {
+		res.status(500).json({ status: 'ERROR', err: error });
+		console.error(error);
+	});
+```
+
+SignUp ([Auth.js](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon/blob/main/hirect-backend/routes/auth.js))
+
+```js
+MongoClient.connect(uri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+})
+	.then((client) => {
+		client
+			.db('Hirect')
+			.collection('Users')
+			.find({ email: email })
+			.toArray((err, results) => {
+				if (results.length === 1) {
+					res.status(100).json({ status: 0, message: 'Email already found' });
+				} else {
+					client
+						.db('Hirect')
+						.collection('Users')
+						.insertOne(data)
+						.then((e) => {
+							res.status(200).json({
+								status: 1,
+								message: 'User Registered',
+								res: { ...e, ...data },
+							});
+						});
+				}
+			});
+
+		return client;
+	})
+	.catch((error) => {
+		res.status(500).json({ status: 'ERROR', err: error });
+		console.error(error);
+	});
+```
+
+Here you can see, As I dont want multiple users I first check for user then I move forward with creating one, And here the user is being created with initial fields which are required so that the application does not break.
+
 ### Link to Source Code
 
 [Github Repo](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon)

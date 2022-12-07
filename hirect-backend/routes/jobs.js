@@ -9,9 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-const uri =
-	'mongodb+srv://pranjaljain0:mOI95OR4zNrtyZ3i@cluster0.gylbe.mongodb.net/hirect?retryWrites=true&w=majority';
-// mongodb+srv://pranjaljain0:mOI95OR4zNrtyZ3i@cluster0.gylbe.mongodb.net/hirect
+const uri = env.MongoDBuri;
 app.get('/', (req, res) => res.json({ Route: 'Jobs' }));
 
 app.get('/all', async (req, res) => {

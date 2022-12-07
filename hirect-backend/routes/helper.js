@@ -9,8 +9,7 @@ const fs = require('fs');
 const { Axios, default: axios } = require('axios');
 const cloudinary = require('cloudinary').v2;
 
-const uri =
-	'mongodb+srv://pranjaljain0:mOI95OR4zNrtyZ3i@cluster0.gylbe.mongodb.net/hirect?retryWrites=true&w=majority';
+const uri = env.MongoDBuri;
 cloudinary.config({
 	cloud_name: 'de7jxzes9',
 	api_key: '161713749771518',

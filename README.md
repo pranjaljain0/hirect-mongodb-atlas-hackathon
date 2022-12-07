@@ -92,6 +92,22 @@ MongoClient.connect(uri, {
 
 Here you can see, As I dont want multiple users I first check for user then I move forward with creating one, And here the user is being created with initial fields which are required so that the application does not break.
 
+To update I am using addToSet feature of MongoDB
+
+Updating Jobs ([jobs.js](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon/blob/main/hirect-backend/routes/jobs.js))
+
+```js
+client
+	.db('Hirect')
+	.collection('Users')
+	.updateOne({ email }, { $addToSet: { jobPosts: { ...jobDetails, jobID } } })
+	.then((e) => {
+		res
+			.status(200)
+			.json({ status: 'SUCCESS', res: e, email, jobDetails, jobID });
+	});
+```
+
 ### Link to Source Code
 
 [Github Repo](https://github.com/pranjaljain0/hirect-mongodb-atlas-hackathon)

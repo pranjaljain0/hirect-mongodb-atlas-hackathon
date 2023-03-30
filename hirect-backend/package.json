@@ -9,7 +9,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@affinda/affinda": "^0.3.1",
+		"@affinda/affinda": "^6.3.2",
 		"axios": "^0.26.1",
 		"body-parser": "^1.19.2",
 		"cloudinary": "^1.29.0",
